@@ -28,6 +28,10 @@ public class UserRegistration {
         String email = sc.next();
         validateEmail(email);
 
+        System.out.println("Enter Password :");
+        String password = sc.next();
+        validatePassword(password);
+
 
         sc.close();
     }
@@ -59,6 +63,13 @@ public class UserRegistration {
             System.out.println("Invalid email id");
 
 }
+    static void validatePassword(String password) {
+        String passwordRegex = "[\\w\\W]{8,}";
 
+        if (Pattern.compile(passwordRegex).matcher(password).matches())
+            System.out.println("Valid");
+        else
+            System.out.println("Password should contain minimum 8 characters.");
+    }
 
 }
