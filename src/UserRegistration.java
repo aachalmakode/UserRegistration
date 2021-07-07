@@ -17,6 +17,11 @@ public class UserRegistration {
         String lastName = sc.next();
         validateName(lastName);
 
+        System.out.println("Enter Email id :");
+        String email = sc.next();
+        validateEmail(email);
+
+
 
         sc.close();
     }
@@ -30,5 +35,14 @@ public class UserRegistration {
                 System.out.println("Name should start with capital letter and need min 3 characters.");
         }
 
+    static void validateEmail(String email) {
+        String emailRegex = "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})?$";
+
+        if (Pattern.compile(emailRegex).matcher(email).matches())
+            System.out.println("Valid");
+        else
+            System.out.println("Invalid email id");
+
 }
 
+}
