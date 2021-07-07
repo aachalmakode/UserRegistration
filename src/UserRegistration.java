@@ -9,6 +9,13 @@ public class UserRegistration {
         System.out.println(" User Registration Form ");
         Scanner sc = new Scanner(System.in);
 
+
+        System.out.println("Enter Mobile Number :");
+        String mobNo = sc.nextLine();
+        validateMobileNumber(mobNo);
+
+
+
         System.out.println("Enter First Name :");
         String firstName = sc.next();
         validateName(firstName);
@@ -22,8 +29,16 @@ public class UserRegistration {
         validateEmail(email);
 
 
-
         sc.close();
+    }
+    static void validateMobileNumber(String number) {
+        String mobNoRegex = "^[7-9]{1}[0-9]{9}$";
+
+        if (Pattern.compile(mobNoRegex).matcher(number).matches())
+            System.out.println("Valid");
+        else
+            System.out.println("Mobile number should contain country code follow by space and 10 digit number.");
+
     }
 
         static void validateName (String name){
@@ -44,5 +59,6 @@ public class UserRegistration {
             System.out.println("Invalid email id");
 
 }
+
 
 }
