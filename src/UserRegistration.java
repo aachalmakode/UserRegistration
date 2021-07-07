@@ -35,7 +35,8 @@ public class UserRegistration {
 
 
         System.out.println("Enter Password :");
-        String password = scline.nextLine();
+        // String password = scline.nextLine();
+        String password = sc.next();
         validatePassword(password);
 
 
@@ -77,18 +78,18 @@ public class UserRegistration {
         String passwordRegex = "[\\w\\W]{8,}";
 
 
-        if (Pattern.compile(passwordRegex).matcher(password).matches() &&
+        if ( Pattern.compile(passwordRegex).matcher(password).matches() &&
 
                 Pattern.compile(".*[A-Z].*").matcher(password).matches() &&
-                Pattern.compile(".*[0-9].*").matcher(password).matches())
+                Pattern.compile(".*[0-9].*").matcher(password).matches() &&
 
-
-            // if (Pattern.compile(passwordRegex).matcher(password).matches())
+                password.length() - password.replaceAll("\\W", "").length() == 1)
+           
             System.out.println("Valid");
 
 
         else
 
-            System.out.println("Password should contain minimum 8 characters, atleast 1 uppercase and atleast 1 numeric number.");
+            System.out.println("Password should contain min 8 characters, atleast 1 uppercase, atleast 1 numeric number and exactly 1 special character.");
     }
 }
